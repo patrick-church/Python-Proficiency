@@ -1,0 +1,31 @@
+GBP_per_USD = 2.13
+Dollars = input('Enter the total amount in USD: ')
+Dollars_1 = float(Dollars[1:len(Dollars)]) 
+Pounds = round(Dollars_1/GBP_per_USD)
+print('The total amount in GBP is about', Pounds, 'pounds.')
+
+Market_Rate = float(input('Enter the CAD/USD Market exchange rate: '))
+Bank_Rate = float(input('Enter the CAD/USD Bank exchange rate: '))
+Difference =  Bank_Rate - Market_Rate
+Percentage_Markup = round((Difference / Market_Rate) * 100)
+print('Percentage markup is', str(Percentage_Markup)+'%.')
+
+
+CURRENCY = ['AUD', 'ZAR', 'EUR', 'INR'] #Do not change
+CURRENCY_BY_USD = [0.7278, 0.0669, 1.1765, 0.0135] #Do not change
+
+Home_Currency = int(input('Select your home currency: 1 for AUD, 2 for ZAR, 3 for EUR, 4 for INR: '))
+Destination_Currency = int(input('Select your destination currency: 1 for AUD, 2 for ZAR, 3 for EUR, 4 for INR: '))
+Total_Home_Currency = input('Enter total amount in home currency: ')
+
+Total_Home_Currency_1 = float(Total_Home_Currency[:-3])
+Exchanged_Value = round(Total_Home_Currency_1*CURRENCY_BY_USD[Home_Currency -1]/CURRENCY_BY_USD[Destination_Currency -1])
+print('The total amount in', CURRENCY[Destination_Currency -1], 'is about', str(Exchanged_Value)+'.')
+
+
+TRANSACTION_FEE = '5%' #Do not change
+Credit_Limit = input('Enter the credit limit amount: ') #Do not change, will be in format $100
+Money_Spent = input('Enter money spent per transaction: ') #Do not change, will be in format $100
+Money_Deduc = float(Money_Spent[1:len(Money_Spent)]) + float(Money_Spent[1:len(Money_Spent)]) * int(TRANSACTION_FEE[0])/100 #money deducted from the credit limit per transaction
+No_Of_Transaction = int(float(Credit_Limit[1:len(Credit_Limit)])//(Money_Deduc)) #calculating total number of transaction
+print('The total number of transactions possible are', str(No_Of_Transaction)+'.')
